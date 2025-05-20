@@ -12,6 +12,7 @@ import { toast } from 'react-toastify';
 
 const ButtonDeleteAdmin = ({ _id, name, refetch }: Partial<ICategory> & { refetch: any }) => {
   const [isDeleteConfirm, setIsDeleteConfirm] = useState<boolean>(false);
+  
   const { mutate, isLoading } = useMutation(deleteAdmin);
 
   const handleRemoveBattle = () => {

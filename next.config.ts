@@ -48,6 +48,7 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'static.wikia.nocookie.net' },
       { protocol: 'https', hostname: 'picsum.photos' },
       { protocol: 'https', hostname: 'res.cloudinary.com' },
+      { protocol: 'https', hostname: 'lh3.googleusercontent.com' },
     ],
   },
   webpack: process.env.NODE_ENV === 'development' ? undefined : webpack,

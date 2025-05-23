@@ -101,7 +101,7 @@ const OrderManagementPage = () => {
     <Container>
       <VStack spacing={32}>
         <HStack pos="apart">
-          <H3>Order Management</H3>
+          <H3>Quản lý đơn hàng</H3>
         </HStack>
 
         <VStack spacing={16}>

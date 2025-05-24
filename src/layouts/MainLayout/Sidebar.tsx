@@ -56,7 +56,7 @@ const Sidebar = () => {
       <Show when={openSideBar !== 'HIDDEN'}>
         <Link href="/">
           <HStack pos="center" className={cn('py-8', openSideBar ? 'px-4' : 'px-0')} noWrap>
-            <Image src="/images/logo.png" alt="logo" width={200} height={60} />
+            <Image src="/images/logo.png" alt="logo" width={150} height={92} />
           </HStack>
         </Link>
       </Show>

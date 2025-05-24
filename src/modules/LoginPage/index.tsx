@@ -54,7 +54,7 @@ const LoginPage = () => {
       </div>
 
       <HStack className="mb-3" pos="center">
-        <Image width={400} height={232} src="/images/logo.png" alt="battle logo" className="h-auto w-[12rem]" />
+        <Image width={150} height={92} src="/images/logo.png" alt="battle logo" className="h-auto w-[12rem]" />
       </HStack>
       <VStack className="w-full max-w-[450px] rounded-lg border bg-[#FFFFFF26] px-6 py-6 shadow-card-2 md:px-8" spacing={16}>
         <h1 className="mb-5 text-center font-semibold text-2xl md:text-3xl">Admin Login</h1>

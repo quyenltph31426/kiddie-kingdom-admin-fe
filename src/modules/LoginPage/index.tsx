@@ -20,6 +20,7 @@ import { type AuthSchema, authSchema } from './libs/validators';
 
 const LoginPage = () => {
   const router = useRouter();
+  
   const { setUser } = useUserStore();
 
   const form = useForm<AuthSchema>({

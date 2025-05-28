@@ -38,18 +38,18 @@ export const updateOrderStatus = async ({
 export const updateShippingStatus = async ({
   id,
   status,
-  note,
+  userNote,
   shipperOfProof,
 }: {
   id: string;
   status: string;
-  note: string;
+  userNote: string;
   shipperOfProof: string[];
 }): Promise<IOrder> => {
   const { data } = await client({
     url: `/api/admin/orders/${id}`,
     method: 'PATCH',
-    data: { shippingStatus: status, note, shipperOfProof },
+    data: { shippingStatus: status, userNote, shipperOfProof },
   });
   return data?.data;
 };

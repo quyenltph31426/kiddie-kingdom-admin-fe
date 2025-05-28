@@ -29,7 +29,6 @@ const UpdateShippingStatus = ({ orderId, currentStatus, refetch }: UpdateShippin
   const [isOpen, setIsOpen] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState<ShippingStatusType>(currentStatus);
   const [note, setNote] = useState<string>('');
-  const [shipperOfProof, setShipperOfProof] = useState<string[]>([]);
 
   const [uploadedImages, setUploadedImages] = useState<string[]>([]);
   const [isUploading, setIsUploading] = useState(false);
@@ -45,7 +44,7 @@ const UpdateShippingStatus = ({ orderId, currentStatus, refetch }: UpdateShippin
     }
 
     mutate(
-      { id: orderId, status: selectedStatus, shipperOfProof, note },
+      { id: orderId, status: selectedStatus, shipperOfProof: uploadedImages, userNote: note },
       {
         onSuccess: () => {
           toast.success('Cập nhật trạng thái vận chuyển thành công!');

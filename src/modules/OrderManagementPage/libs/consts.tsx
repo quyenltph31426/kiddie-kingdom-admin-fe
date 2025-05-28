@@ -96,13 +96,13 @@ export const formatDateTime = (dateString?: string) => {
 
 export const COLUMNS = (refetch: any): ITableColumn[] => [
   {
-    title: 'Order Number',
+    title: 'Order Code',
     key: 'orderCode',
     align: 'left',
     className: 'w-[150px]',
   },
   {
-    title: 'Customer',
+    title: 'Khách hàng',
     key: 'userId',
     align: 'left',
     getCell: ({ row }) => (
@@ -119,13 +119,13 @@ export const COLUMNS = (refetch: any): ITableColumn[] => [
     getCell: ({ row }) => <div className="px-2 py-1 text-center">{row.items?.length || 0}</div>,
   },
   {
-    title: 'Total Amount',
+    title: 'Tổng tiền',
     key: 'totalAmount',
     align: 'right',
     getCell: ({ row }) => <div className="px-2 py-1 text-right font-medium">{formatCurrency(row.totalAmount)}</div>,
   },
   {
-    title: 'Discount',
+    title: 'Giảm giá',
     key: 'discountAmount',
     align: 'right',
     getCell: ({ row }) => (
@@ -155,7 +155,7 @@ export const COLUMNS = (refetch: any): ITableColumn[] => [
     ),
   },
   {
-    title: 'Payment Method',
+    title: 'Phương thức thanh toán',
     key: 'paymentMethod',
     align: 'center',
     getCell: ({ row }) => (
@@ -163,7 +163,7 @@ export const COLUMNS = (refetch: any): ITableColumn[] => [
     ),
   },
   {
-    title: 'Payment Status',
+    title: 'Trạng thái thanh toán',
     key: 'paymentStatus',
     align: 'center',
     getCell: ({ row }) => (
@@ -176,13 +176,13 @@ export const COLUMNS = (refetch: any): ITableColumn[] => [
     ),
   },
   {
-    title: 'Paid At',
+    title: 'Thời gian thanh toán',
     key: 'paidAt',
     align: 'center',
     getCell: ({ row }) => <div className="px-2 py-1 text-center">{formatDateTime(row.paidAt)}</div>,
   },
   {
-    title: 'Shipping Status',
+    title: 'Trang thái vận chuyển',
     key: 'shippingStatus',
     align: 'center',
     getCell: ({ row }) => (
@@ -193,13 +193,13 @@ export const COLUMNS = (refetch: any): ITableColumn[] => [
     ),
   },
   {
-    title: 'Shipped At',
+    title: 'Thời gian vận chuyển',
     key: 'shippedAt',
     align: 'center',
     getCell: ({ row }) => <div className="px-2 py-1 text-center">{formatDateTime(row.shippedAt)}</div>,
   },
   {
-    title: 'Delivered At',
+    title: 'Thời gian giao hàng',
     key: 'deliveredAt',
     align: 'center',
     getCell: ({ row }) => <div className="px-2 py-1 text-center">{formatDateTime(row.deliveredAt)}</div>,

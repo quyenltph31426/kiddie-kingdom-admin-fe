@@ -35,9 +35,6 @@ const Sidebar = () => {
     deleteCookie('access_token');
     deleteCookie('refresh_token');
     toast.success('Đăng xuất thành công!');
-    //   },
-
-    //   },
   };
 
   useEffect(() => {

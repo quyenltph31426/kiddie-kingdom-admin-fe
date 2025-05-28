@@ -150,37 +150,37 @@ const OrderManagementPage = () => {
           <HStack className="flex-wrap gap-4" pos="right">
             {/* Payment Method Filter */}
             <div className="w-full sm:w-[180px]">
-              <Label className="font-medium text-grey-500 text-xs">Payment Method</Label>
+              <Label className="font-medium text-grey-500 text-xs">Phương thức thanh toán</Label>
               <SelectCustom
                 height="36px"
                 data={paymentMethodOptions}
                 value={paramsQuery.paymentMethod || 'ALL'}
                 onChange={handlePaymentMethodChange}
-                placeholder="Payment Method"
+                placeholder="Phương thức thanh toán"
               />
             </div>
 
             {/* Payment Status Filter */}
             <div className="w-full sm:w-[180px]">
-              <Label className="font-medium text-grey-500 text-xs">Payment Status</Label>
+              <Label className="font-medium text-grey-500 text-xs">Trạng thái thanh toán</Label>
               <SelectCustom
                 height="36px"
                 data={paymentStatusOptions}
                 value={paramsQuery.paymentStatus || 'ALL'}
                 onChange={handlePaymentStatusChange}
-                placeholder="Payment Status"
+                placeholder="Trạng thái thanh toán"
               />
             </div>
 
             {/* Shipping Status Filter */}
             <div className="w-full sm:w-[180px]">
-              <Label className="font-medium text-grey-500 text-xs">Shipping Status</Label>
+              <Label className="font-medium text-grey-500 text-xs">Trạng thái vận chuyển</Label>
               <SelectCustom
                 height="36px"
                 data={shippingStatusOptions}
                 value={paramsQuery.shippingStatus || 'ALL'}
                 onChange={handleShippingStatusChange}
-                placeholder="Shipping Status"
+                placeholder="Trạng thái vận chuyển"
               />
             </div>
           </HStack>

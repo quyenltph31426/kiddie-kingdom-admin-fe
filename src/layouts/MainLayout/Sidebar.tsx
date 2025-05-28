@@ -12,6 +12,7 @@ import { cn } from '@/libs/common';
 import { ROUTER } from '@/libs/router';
 import { useAppStore } from '@/stores/AppStore';
 import { useUserStore } from '@/stores/UserStore';
+import { deleteCookie } from 'cookies-next';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
@@ -23,15 +24,20 @@ const Sidebar = () => {
   const queryClient = useQueryClient();
 
   const { openSideBar, toggleSidebar, setOpenSideBar } = useAppStore();
-  const { user } = useUserStore();
+  const { user, logout } = useUserStore();
   const isTablet = useTablet();
   const isMobile = useMobile();
 
   const handleLogout = () => {
-    queryClient.clear();
     router.replace(ROUTER.SIGN_IN);
+    queryClient.clear();
+    logout();
+    deleteCookie('access_token');
+    deleteCookie('refresh_token');
+    toast.success('Đăng xuất thành công!');
+    //   },
 
-    toast.success('');
+    //   },
   };
 
   useEffect(() => {
@@ -110,14 +116,6 @@ const Sidebar = () => {
           <div className="px-6">
             <Separator className="w-[content] rounded-sm border-primary-400 border-t-[2px]" />
           </div>
-          <Link href="">
-            <HStack spacing={20} noWrap className="px-8 py-4 text-grey-100 text-sm hover:bg-[#6AA65B]">
-              <Icons.help />
-              <Show when={openSideBar === 'SHOW'}>
-                <span className="mt-[1px] font-medium">Help</span>
-              </Show>
-            </HStack>
-          </Link>
 
           <HStack
             spacing={20}
@@ -127,7 +125,7 @@ const Sidebar = () => {
           >
             <Icons.logout />
             <Show when={openSideBar === 'SHOW'}>
-              <span className="font-medium">Logout Account</span>
+              <span className="font-medium">Đăng xuất</span>
             </Show>
           </HStack>
         </VStack>

@@ -13,6 +13,7 @@ import { deleteCookie } from 'cookies-next';
 import { useRouter } from 'next-nprogress-bar';
 import Image from 'next/image';
 import React from 'react';
+import { toast } from 'react-toastify';
 
 const UserInfo = () => {
   const { user } = useUserLogin();
@@ -30,6 +31,9 @@ const UserInfo = () => {
     logout();
     deleteCookie('access_token');
     deleteCookie('refresh_token');
+
+    toast.success('Đăng xuất thành công!');
+
     //   },
     //   onError: onMutateError,
     // });

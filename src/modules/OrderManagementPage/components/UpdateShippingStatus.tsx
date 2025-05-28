@@ -72,7 +72,6 @@ const UpdateShippingStatus = ({ orderId, currentStatus, refetch }: UpdateShippin
         const newImages = data?.map((x) => x.url);
         setUploadedImages(newImages);
         setIsUploading(false);
-        refetch?.();
       },
       onError: (error) => {
         onMutateError(error);

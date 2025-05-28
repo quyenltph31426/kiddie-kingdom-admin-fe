@@ -119,7 +119,7 @@ const UpdateShippingStatus = ({ orderId, currentStatus, refetch }: UpdateShippin
                       } ${isDisabled ? 'text-gray-400' : ''}`}
                     >
                       {SHIPPING_STATUS_OPTIONS.find((option) => option.value === value)?.label || value}
-                      {isDisabled && value !== currentStatus && ' (invalid transition)'}
+                      {isDisabled && value !== currentStatus && ' (không hợp lệ)'}
                     </label>
                   </div>
                 );
@@ -130,52 +130,53 @@ const UpdateShippingStatus = ({ orderId, currentStatus, refetch }: UpdateShippin
               <Label>Note (nếu có)</Label>
               <Input value={note} onChange={(e) => setNote(e.target.value)} placeholder="Nhập ghi chú" />
             </VStack>
+            <Show when={selectedStatus === ShippingStatus.DELIVERED}>
+              <div className="space-y-2">
+                <Label>Thêm hình ảnh giao hàng *</Label>
+                <FileUploader
+                  maxSize={5}
+                  minSize={0.001}
+                  ref={fileRef}
+                  name="file"
+                  multiple
+                  types={['JPG', 'PNG', 'JPEG']}
+                  handleChange={handleFileChange}
+                  onSizeError={() => toast.error('Image size must be less than 5MB')}
+                  onTypeError={() => toast.error('Only JPG, PNG and JPEG files are allowed')}
+                >
+                  <div className="cursor-pointer rounded-md border-2 border-gray-300 border-dashed p-4 text-center hover:border-gray-400">
+                    {/* <Icons.image className="mx-auto h-8 w-8 text-gray-400" /> */}
+                    <p className="mt-2 text-gray-500 text-sm">Kéo và thả hoặc chọn hình ảnh</p>
+                    <p className="text-gray-400 text-xs">PNG, JPG, JPEG (max 5MB)</p>
+                  </div>
+                </FileUploader>
 
-            <div className="space-y-2">
-              <Label>Thêm hình ảnh (không bắt buộc)</Label>
-              <FileUploader
-                maxSize={5}
-                minSize={0.001}
-                ref={fileRef}
-                name="file"
-                multiple
-                types={['JPG', 'PNG', 'JPEG']}
-                handleChange={handleFileChange}
-                onSizeError={() => toast.error('Image size must be less than 5MB')}
-                onTypeError={() => toast.error('Only JPG, PNG and JPEG files are allowed')}
-              >
-                <div className="cursor-pointer rounded-md border-2 border-gray-300 border-dashed p-4 text-center hover:border-gray-400">
-                  {/* <Icons.image className="mx-auto h-8 w-8 text-gray-400" /> */}
-                  <p className="mt-2 text-gray-500 text-sm">Kéo và thả hoặc chọn hình ảnh</p>
-                  <p className="text-gray-400 text-xs">PNG, JPG, JPEG (max 5MB)</p>
-                </div>
-              </FileUploader>
+                {/* Preview uploaded images */}
+                <Show when={uploadedImages.length > 0}>
+                  <div className="mt-4 grid grid-cols-4 gap-2">
+                    {uploadedImages.map((image, index) => (
+                      <div key={index} className="group relative h-20 w-20 overflow-hidden rounded-md">
+                        <Image src={image} alt={`Review image ${index + 1}`} fill className="object-cover" />
+                        <button
+                          type="button"
+                          onClick={() => removeImage(index)}
+                          className="absolute top-1 right-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-white opacity-0 transition-opacity group-hover:opacity-100"
+                        >
+                          <X className="h-3 w-3" />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                </Show>
 
-              {/* Preview uploaded images */}
-              <Show when={uploadedImages.length > 0}>
-                <div className="mt-4 grid grid-cols-4 gap-2">
-                  {uploadedImages.map((image, index) => (
-                    <div key={index} className="group relative h-20 w-20 overflow-hidden rounded-md">
-                      <Image src={image} alt={`Review image ${index + 1}`} fill className="object-cover" />
-                      <button
-                        type="button"
-                        onClick={() => removeImage(index)}
-                        className="absolute top-1 right-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-white opacity-0 transition-opacity group-hover:opacity-100"
-                      >
-                        <X className="h-3 w-3" />
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              </Show>
-
-              <Show when={isUploading}>
-                <div className="mt-2 flex items-center gap-2">
-                  <Icons.spinner className="h-4 w-4 animate-spin" />
-                  <span className="text-gray-500 text-sm">Uploading image...</span>
-                </div>
-              </Show>
-            </div>
+                <Show when={isUploading}>
+                  <div className="mt-2 flex items-center gap-2">
+                    <Icons.spinner className="h-4 w-4 animate-spin" />
+                    <span className="text-gray-500 text-sm">Uploading image...</span>
+                  </div>
+                </Show>
+              </div>
+            </Show>
           </VStack>
 
           <HStack pos="apart" className="mt-4">

@@ -21,14 +21,16 @@ export const getOrderById = async (id: string): Promise<IOrder> => {
 export const updateOrderStatus = async ({
   id,
   status,
+  note,
 }: {
   id: string;
   status: string;
+  note: string;
 }): Promise<IOrder> => {
   const { data } = await client({
     url: `/api/admin/orders/${id}`,
     method: 'PATCH',
-    data: { status },
+    data: { status, note },
   });
   return data?.data;
 };
@@ -36,14 +38,18 @@ export const updateOrderStatus = async ({
 export const updateShippingStatus = async ({
   id,
   status,
+  note,
+  shipperOfProof,
 }: {
   id: string;
   status: string;
+  note: string;
+  shipperOfProof: string[];
 }): Promise<IOrder> => {
   const { data } = await client({
     url: `/api/admin/orders/${id}`,
     method: 'PATCH',
-    data: { shippingStatus: status },
+    data: { shippingStatus: status, note, shipperOfProof },
   });
   return data?.data;
 };

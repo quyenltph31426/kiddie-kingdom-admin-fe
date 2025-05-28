@@ -5,6 +5,8 @@ import { ShippingStatus, type ShippingStatusType } from '@/api/order/types';
 import { Icons } from '@/assets/icons';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { HStack, VStack } from '@/components/utilities';
 import { onMutateError } from '@/libs/common';
@@ -22,6 +24,8 @@ interface UpdateShippingStatusProps {
 const UpdateShippingStatus = ({ orderId, currentStatus, refetch }: UpdateShippingStatusProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState<ShippingStatusType>(currentStatus);
+  const [note, setNote] = useState<string>('');
+  const [shipperOfProof, setShipperOfProof] = useState<string[]>([]);
 
   const { mutate, isLoading } = useUpdateShippingStatusMutation();
   const validNextStatuses = getValidShippingStatusTransitions(currentStatus);
@@ -33,10 +37,10 @@ const UpdateShippingStatus = ({ orderId, currentStatus, refetch }: UpdateShippin
     }
 
     mutate(
-      { id: orderId, status: selectedStatus },
+      { id: orderId, status: selectedStatus, shipperOfProof, note },
       {
         onSuccess: () => {
-          toast.success('Shipping status updated successfully');
+          toast.success('Cập nhật trạng thái vận chuyển thành công!');
           setIsOpen(false);
           refetch();
         },
@@ -54,7 +58,7 @@ const UpdateShippingStatus = ({ orderId, currentStatus, refetch }: UpdateShippin
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>Update Shipping Status</DialogTitle>
+            <DialogTitle>Cập nhật trạng thái vận chuyển</DialogTitle>
           </DialogHeader>
 
           <VStack spacing={16} className="py-4">
@@ -81,14 +85,19 @@ const UpdateShippingStatus = ({ orderId, currentStatus, refetch }: UpdateShippin
                 );
               })}
             </RadioGroup>
+
+            <VStack>
+              <Label>Note (nếu có)</Label>
+              <Input value={note} onChange={(e) => setNote(e.target.value)} placeholder="Nhập ghi chú" />
+            </VStack>
           </VStack>
 
           <HStack pos="apart" className="mt-4">
             <Button variant="outline" onClick={() => setIsOpen(false)}>
-              Cancel
+              Hủy
             </Button>
             <Button onClick={handleUpdateStatus} disabled={isLoading || selectedStatus === currentStatus}>
-              {isLoading ? <Icons.spinner className="h-4 w-4 animate-spin" /> : 'Update Status'}
+              {isLoading ? <Icons.spinner className="h-4 w-4 animate-spin" /> : 'Cập nhật'}
             </Button>
           </HStack>
         </DialogContent>

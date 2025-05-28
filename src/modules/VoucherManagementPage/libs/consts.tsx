@@ -30,7 +30,7 @@ export const COLUMNS = (refetch: any): ITableColumn[] => [
     title: 'Value',
     key: 'value',
     align: 'center',
-    getCell: ({ row }) => <span>{row?.type === 'PERCENTAGE' ? `${row?.value}%` : `$${formatNumber(row?.value)}`}</span>,
+    getCell: ({ row }) => <span>{row?.type === 'PERCENTAGE' ? `${row?.value}%` : `${formatNumber(row?.value)} VNĐ`}</span>,
   },
   {
     title: 'Số lượng sử dụng tối đa',

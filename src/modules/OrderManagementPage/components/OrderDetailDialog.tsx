@@ -168,7 +168,7 @@ const OrderDetailDialog = ({ order }: OrderDetailDialogProps) => {
             <div className="mt-6 border-t pt-4 text-center text-gray-500 text-xs">
               <p>Thank you for your purchase!</p>
               <p>For any questions, please contact our customer support.</p>
-              <p className="mt-2">© {new Date().getFullYear()} MyKingdom</p>
+              <p className="mt-2">© {new Date().getFullYear()} Kiddie Kingdom</p>
             </div>
           </div>
         </DialogContent>

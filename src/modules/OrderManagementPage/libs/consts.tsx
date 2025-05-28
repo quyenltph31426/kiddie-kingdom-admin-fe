@@ -211,7 +211,7 @@ export const COLUMNS = (refetch: any): ITableColumn[] => [
     getCell: ({ row }) => <div className="px-2 py-1 text-center">{formatDateTime(row.createdAt)}</div>,
   },
   {
-    title: 'Hành độngs',
+    title: 'Hành động',
     key: 'actions',
     align: 'center',
     className: 'w-[100px]',

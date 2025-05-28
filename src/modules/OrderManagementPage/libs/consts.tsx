@@ -11,6 +11,7 @@ import type { ITableColumn } from '@/components/ui/table';
 import { HStack } from '@/components/utilities';
 import { formatCurrency } from '@/libs/common';
 import { format } from 'date-fns';
+import Image from 'next/image';
 import OrderDetailDialog from '../components/OrderDetailDialog';
 import UpdatePaymentStatus from '../components/UpdatePaymentStatus';
 import UpdateShippingStatus from '../components/UpdateShippingStatus';
@@ -209,6 +210,24 @@ export const COLUMNS = (refetch: any): ITableColumn[] => [
     key: 'createdAt',
     align: 'center',
     getCell: ({ row }) => <div className="px-2 py-1 text-center">{formatDateTime(row.createdAt)}</div>,
+  },
+  {
+    title: 'Note',
+    key: 'userNote',
+    align: 'center',
+    getCell: ({ row }) => <div className="line-clamp-2 px-2 py-1 text-center">{row.userNote}</div>,
+  },
+  {
+    title: 'Minh chứng giao hàng',
+    key: 'shipperOfProof',
+    align: 'center',
+    getCell: ({ row }) => (
+      <div className="gri min-w-[120px] grid-cols-2 gap-1 px-2 py-1 text-center">
+        {row.shipperOfProof?.map((proof: string, index: number) => (
+          <Image key={index} src={proof} alt={`Proof ${index + 1}`} width={80} height={80} className="rounded object-cover" />
+        ))}
+      </div>
+    ),
   },
   {
     title: 'Hành độngs',

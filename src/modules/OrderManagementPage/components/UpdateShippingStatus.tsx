@@ -6,7 +6,6 @@ import { uploadMultiFile } from '@/api/upload/requests';
 import { Icons } from '@/assets/icons';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { FormLabel } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
@@ -135,7 +134,7 @@ const UpdateShippingStatus = ({ orderId, currentStatus, refetch }: UpdateShippin
             </VStack>
 
             <div className="space-y-2">
-              <FormLabel>Thêm hình ảnh (không bắt buộc)</FormLabel>
+              <Label>Thêm hình ảnh (không bắt buộc)</Label>
               <FileUploader
                 maxSize={5}
                 minSize={0.001}

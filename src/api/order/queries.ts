@@ -13,7 +13,7 @@ export const useOrderByIdQuery = createQuery<IOrder, string>({
 });
 
 export const useUpdateOrderStatusMutation = createMutation<IOrder, { id: string; status: string; note: string }>({
-  mutationFn: ({ id, status, note }) => updateOrderStatus({ id, status, note }),
+  mutationFn: ({ id, note }) => updateOrderStatus({ id,  note }),
 });
 
 // Add new mutations for shipping and payment status

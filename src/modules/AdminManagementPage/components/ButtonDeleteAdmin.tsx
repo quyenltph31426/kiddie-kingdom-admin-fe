@@ -18,6 +18,7 @@ const ButtonDeleteAdmin = ({ _id, name, refetch }: Partial<ICategory> & { refetc
     mutate(String(_id), {
       onSuccess: async () => {
         refetch();
+        toast.success('Xóa admin thành công!');
       },
       onError: onMutateError,
     });

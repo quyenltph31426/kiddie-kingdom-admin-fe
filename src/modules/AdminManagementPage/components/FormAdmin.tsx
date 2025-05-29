@@ -18,6 +18,7 @@ const FormAdmin = ({ mode }: any) => {
 
       <TextField required={mode !== 'edit'} control={form.control} name="password" label="Password" className="h-12" fullWidth />
       <SelectCustomField
+        data={[{ label: 'Admin', value: 'ADMIN' }]}
         required
         control={form.control}
         name="role"

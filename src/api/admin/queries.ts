@@ -9,5 +9,6 @@ export const useAdminsQuery = createQuery<IAdminResponse, Partial<IAdminQuery>>(
 
 export const useAdminByIdQuery = createQuery<IAdmin, string>({
   queryKey: ['admin/detail'],
+  
   fetcher: (id) => getAdminById(id),
 });

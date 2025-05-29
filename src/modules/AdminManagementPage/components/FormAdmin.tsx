@@ -10,7 +10,7 @@ const FormAdmin = ({ mode }: any) => {
   const form = useFormContext<AdminSchema>();
   return (
     <VStack spacing={16}>
-      <HStack pos="center" className="overflow-hidden">
+      <HStack pos="center" className="overflow-hidden">x
         <UploadAvatarField control={form.control} name="avatar" />
       </HStack>
       <TextField required control={form.control} name="username" label="Username" className="h-12" fullWidth />

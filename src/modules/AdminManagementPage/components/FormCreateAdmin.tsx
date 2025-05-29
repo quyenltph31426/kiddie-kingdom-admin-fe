@@ -34,6 +34,7 @@ const FormCreateAdmin = ({ refetch }: Props) => {
   });
 
   const handleSubmit: SubmitHandler<AdminSchema> = async (formData) => {
+    
     mutate(formData, {
       onSuccess: () => {
         toast.success('Create new admin successfully!');

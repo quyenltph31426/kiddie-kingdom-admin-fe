@@ -29,7 +29,9 @@ const ButtonDeleteAdmin = ({ _id, name, refetch }: Partial<ICategory> & { refetc
     <AlertDialogComponent
       onOk={handleRemoveBattle}
       description={
-       
+        <div>
+          <p className="line-clamp-4 font-medium text-lg">Bạn có chắc chắn muốn xóa admin "{name}"?</p>
+        </div>
       }
       isOpen={isDeleteConfirm}
       setIsOpen={setIsDeleteConfirm}

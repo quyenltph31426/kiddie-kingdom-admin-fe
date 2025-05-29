@@ -7,6 +7,7 @@ import { useFormContext } from 'react-hook-form';
 import type { AdminSchema } from '../libs/validators';
 
 const FormAdmin = ({ mode }: any) => {
+  const form = useFormContext<AdminSchema>();
   return (
     <VStack spacing={16}>
       <HStack pos="center" className="overflow-hidden">x
@@ -17,7 +18,6 @@ const FormAdmin = ({ mode }: any) => {
 
       <TextField required={mode !== 'edit'} control={form.control} name="password" label="Password" className="h-12" fullWidth />
       <SelectCustomField
-        data={[{ label: 'Admin', value: 'ADMIN' }]}
         required
         control={form.control}
         name="role"

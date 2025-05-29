@@ -30,7 +30,6 @@ const FormCreateAdmin = ({ refetch }: Props) => {
       password: '',
       role: 'ADMIN',
     },
-    resolver: zodResolver(adminSchema),
   });
 
   const handleSubmit: SubmitHandler<AdminSchema> = async (formData) => {
